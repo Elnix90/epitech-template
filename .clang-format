@@ -1,0 +1,47 @@
+---
+# Epitech C coding style (norme v8.1)
+BasedOnStyle: LLVM
+Language: C
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 80
+Cpp11BracedListStyle: false
+
+# Multiline statements: operators at line start, +4 spaces per level
+ContinuationIndentWidth: 4
+AlignAfterOpenBracket: DontAlign
+AlignOperands: DontAlign
+BreakBeforeBinaryOperators: NonAssignment
+
+# Braces: functions alone on their line, control structures on the same line
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: Never
+  AfterStruct: false
+  AfterUnion: false
+  AfterEnum: false
+  BeforeElse: false
+  BeforeWhile: false
+
+# Pointers: int *a, char **argv, char *const *array, (int *) ptr
+PointerAlignment: Right
+SpaceAroundPointerQualifiers: Default
+SpaceAfterCStyleCast: true
+
+# Blank lines / EOF
+MaxEmptyLinesToKeep: 1
+InsertNewlineAtEOF: true
+SeparateDefinitionBlocks: Always
+
+# Keep single-line statements broken up
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+
+# Preprocessor directives (#ifndef, #include, ...) indented by nesting level
+IndentPPDirectives: BeforeHash
+
+# switch: case labels and their bodies indented one level past the switch
+IndentCaseLabels: true
