@@ -1,0 +1,16 @@
+# valgrind artifacts
+vgcore.*
+
+# C tests tools artifacts
+*.gcda
+*.gcno
+unit_tests
+
+# Compilation artifatcs
+*.o
+
+# Jetbrains IDEs mess
+.idea
+
+# The compiled lib
+libmy.a
