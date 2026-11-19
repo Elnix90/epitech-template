@@ -43,5 +43,6 @@ int my_showstr(char const *str);
 char *my_strcat(char *dest, char const *src);
 char *my_strncat(char *dest, char const *src, int nb);
 void my_int_to_str(int n, char *str);
+char *my_strchr(const char *s, char c);
 
 #endif
