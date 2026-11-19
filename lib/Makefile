@@ -25,6 +25,7 @@ SRC = src/my_compute_power_rec.c \
 	src/my_strlen.c \
 	src/my_strncat.c \
 	src/my_strcmp.c \
+	src/my_strncmp.c \
 	src/my_strncpy.c \
 	src/my_strstr.c \
 	src/my_swap.c \
