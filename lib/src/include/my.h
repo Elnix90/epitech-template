@@ -7,6 +7,7 @@
 
 #ifndef MY_H_
     #define MY_H_
+    #include <stdbool.h>
 
 void my_putchar(char c);
 int my_isneg(int nb);
