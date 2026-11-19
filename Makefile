@@ -40,11 +40,13 @@ fclean: clean
 	rm -f $(NAME)
 	make -C lib/ fclean
 
-unit_tests: $(LIB) $(TESTS)
-	$(CC) $(CFLAGS) -I src/include -o unit_tests -l$(LIB) $(TESTS) --coverage -lcriterion $(LDLIBS)
+unit_tests: $(SRC) $(TESTS)
+	$(CC) $(CFLAGS) -I src/include -o unit_tests $(SOURCE) $(TESTS) -Llib -l$(LIB) --coverage -lcriterion
 
 tests_run: unit_tests
 	./unit_tests
+	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/
+	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/ --txt-metric branch
 
 re: fclean all
 
