@@ -39,7 +39,8 @@ SRC = src/my_compute_power_rec.c \
 	src/case/my_str_isupper.c \
 	src/case/my_strlowcase.c \
 	src/case/my_strupcase.c \
-	src/case/upper.c
+	src/case/upper.c \
+	src/my_strchr.c
 
 CC = epiclang
 CFLAGS = -Wall -Wextra -I src/include
