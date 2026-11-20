@@ -45,5 +45,6 @@ char *my_strcat(char *dest, char const *src);
 char *my_strncat(char *dest, char const *src, int nb);
 void my_int_to_str(int n, char *str);
 char *my_strchr(const char *s, char c);
+char *my_strndup(const char *str, int n);
 
 #endif

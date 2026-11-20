@@ -41,17 +41,23 @@ SRC = src/my_compute_power_rec.c \
 	src/case/my_strlowcase.c \
 	src/case/my_strupcase.c \
 	src/case/upper.c \
-	src/my_strchr.c
+	src/my_strchr.c \
+	src/my_strndup.c
 
 CC = epiclang
-CFLAGS = -Wall -Wextra -I src/include
+CFLAGS = -Wall -Wextra -W -I src/include
 
 TESTS = tests/my_getnbr_test.c \
-	tests/my_sort_int_array_test.c
+	tests/my_sort_int_array_test.c \
+	tests/my_strndup_test.c
+
+UNIT_TESTS = unit_tests
 
 OBJ = $(SRC:.c=.o)
 
 VGCORE = vgcore.*
+GCDO = *.gcno
+GCDA = *.gcda
 
 all: $(NAME)
 
@@ -59,17 +65,22 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ) $(VGCORE) unit_tests *.gcno *.gcda
+	rm -f $(OBJ) $(VGCORE) $(UNIT_TESTS) $(GCDO) $(GCDA)
 
 fclean: clean
 	rm -f $(NAME)
 
 unit_tests: $(NAME) $(TESTS)
-	$(CC) $(CFLAGS) -I src/include -o unit_tests $(TESTS) $(NAME) --coverage -lcriterion
+	$(CC) $(CFLAGS) -I src/include -o $(UNIT_TESTS) $(TESTS) $(NAME) --coverage -lcriterion
 
 tests_run: unit_tests
-	./unit_tests
+	./$(UNIT_TESTS)
+	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/
+	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/ --txt-metric branch
 
 re: fclean all
+
+# Re-Builds only the source code, not the lib as its too long for me and I'm bored
+simple: clean all
 
 .PHONY: all clean fclean re tests_run

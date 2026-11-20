@@ -17,6 +17,8 @@ SRC = $(MAIN) $(SOURCE)
 
 TESTS = 
 
+UNIT_TESTS = unit_tests
+
 OBJ = $(SRC:.c=.o)
 
 VGCORE = vgcore.*
@@ -34,17 +36,17 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -I src/include -o $(NAME) $(OBJ) -Llib -l$(LIB) $(LDLIBS)
 
 clean:
-	rm -f $(OBJ) $(VGCORE) unit_tests $(GCDO) $(GCDA)
+	rm -f $(OBJ) $(VGCORE) $(UNIT_TESTS) $(GCDO) $(GCDA)
 
 fclean: clean
 	rm -f $(NAME)
 	make -C lib/ fclean
 
 unit_tests: $(SRC) $(TESTS)
-	$(CC) $(CFLAGS) -I src/include -o unit_tests $(SOURCE) $(TESTS) -Llib -l$(LIB) --coverage -lcriterion
+	$(CC) $(CFLAGS) -I src/include -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) --coverage -lcriterion
 
 tests_run: unit_tests
-	./unit_tests
+	./$(UNIT_TESTS)
 	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/
 	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/ --txt-metric branch
 
