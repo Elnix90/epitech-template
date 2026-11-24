@@ -26,14 +26,14 @@ GCDO = *.gcno
 GCDA = *.gcda
 
 CC = epiclang
-CFLAGS = -Wall -Wextra -I src/include -g
+CFLAGS = -Wall -Wextra -I lib/include -g
 LDLIBS = -lm
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C lib
-	$(CC) $(CFLAGS) -I src/include -o $(NAME) $(OBJ) -Llib -l$(LIB) $(LDLIBS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -Llib -l$(LIB) $(LDLIBS)
 
 clean:
 	rm -f $(OBJ) $(VGCORE) $(UNIT_TESTS) $(GCDO) $(GCDA)
@@ -43,7 +43,7 @@ fclean: clean
 	make -C lib/ fclean
 
 unit_tests: $(SRC) $(TESTS)
-	$(CC) $(CFLAGS) -I src/include -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) --coverage -lcriterion
+	$(CC) $(CFLAGS) -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) --coverage -lcriterion
 
 tests_run: unit_tests
 	./$(UNIT_TESTS)

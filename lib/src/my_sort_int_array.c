@@ -5,7 +5,7 @@
 ** my sort int array (bubble sort)
 */
 
-#include "include/my.h"
+#include "my.h"
 
 static void swap_if_needed(int *array, int j)
 {

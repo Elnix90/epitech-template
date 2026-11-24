@@ -45,7 +45,7 @@ SRC = src/my_compute_power_rec.c \
 	src/my_strndup.c
 
 CC = epiclang
-CFLAGS = -Wall -Wextra -W -I src/include
+CFLAGS = -Wall -Wextra -W -I include
 
 TESTS = tests/my_getnbr_test.c \
 	tests/my_sort_int_array_test.c \
@@ -70,8 +70,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-unit_tests: $(NAME) $(TESTS)
-	$(CC) $(CFLAGS) -I src/include -o $(UNIT_TESTS) $(TESTS) $(NAME) --coverage -lcriterion
+unit_tests: $(SRC) $(TESTS)
+	$(CC) $(CFLAGS) -o $(UNIT_TESTS) $(TESTS) $(SRC) --coverage -lcriterion
 
 tests_run: unit_tests
 	./$(UNIT_TESTS)

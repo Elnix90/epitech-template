@@ -5,7 +5,7 @@
 ** my_getnbr tests
 */
 
-#include "../src/include/my.h"
+#include "../include/my.h"
 #include <criterion/criterion.h>
 
 Test(unit, my_getnbr_returns_correct_value)

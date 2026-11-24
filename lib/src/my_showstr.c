@@ -5,7 +5,7 @@
 ** showstr
 */
 
-#include "include/my.h"
+#include "my.h"
 
 int my_showstr(char const *str)
 {

@@ -5,7 +5,7 @@
 ** tests_my_sort_int_array.c
 */
 
-#include "../src/include/my.h"
+#include "../include/my.h"
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 

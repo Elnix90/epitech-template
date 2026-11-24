@@ -5,7 +5,7 @@
 ** Tests for my_strndup
 */
 
-#include "../src/include/my.h"
+#include "../include/my.h"
 #include <criterion/criterion.h>
 #include <stdlib.h>
 

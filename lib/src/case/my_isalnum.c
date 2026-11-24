@@ -5,7 +5,7 @@
 ** is_alnum
 */
 
-#include "../include/my.h"
+#include "my.h"
 
 int my_isalnum(char const c)
 {

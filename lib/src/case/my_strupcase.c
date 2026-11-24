@@ -5,7 +5,7 @@
 ** strupcase
 */
 
-#include "../include/my.h"
+#include "my.h"
 char *my_strupcase(char *str)
 {
     for (int i = 0; str[i] != '\0'; i++)

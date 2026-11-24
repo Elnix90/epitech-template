@@ -5,7 +5,7 @@
 ** My imlementation of isneg function
 */
 
-#include "include/my.h"
+#include "my.h"
 
 int my_isneg(int nb)
 {

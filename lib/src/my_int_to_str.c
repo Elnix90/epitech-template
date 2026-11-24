@@ -5,7 +5,7 @@
 ** Converts an int to a str
 */
 
-#include "include/my.h"
+#include "my.h"
 void my_int_to_str(int n, char *str)
 {
     int i = 0;
