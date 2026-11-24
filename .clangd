@@ -1,0 +1,12 @@
+CompileFlags:
+  Add: [-xc, -Wall, -Wextra, -I., -I./src/include, -I./lib/src/include]
+
+Diagnostics:
+  MissingIncludes: Strict
+  UnusedIncludes: Strict
+
+Completion:
+  HeaderInsertion: IWYU
+
+Style:
+  QuotedHeaders: ["src/.*"]
