@@ -27,7 +27,7 @@ GCDA = *.gcda
 
 CC = epiclang
 CFLAGS = -Wall -Wextra -I lib/include -g
-LDLIBS = -lm
+LDLIBS = 
 
 all: $(NAME)
 
@@ -44,12 +44,15 @@ fclean: clean
 	make -C lib/ fclean
 
 unit_tests: $(SRC) $(TESTS)
-	$(CC) $(CFLAGS) -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) --coverage -lcriterion
+	$(CC) $(CFLAGS) -I src/include -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) $(LDLIBS) --coverage -lcriterion -Wl,--wrap=malloc,--wrap=realloc
 
 tests_run: unit_tests
+	rm -f $(GCDA)
 	./$(UNIT_TESTS)
-	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/
-	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/ --txt-metric branch
+	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/ > eca_lc
+	cat eca_lc
+	gcovr --gcov-executable "llvm-cov gcov" --exclude tests/ --txt-metric branch > eca_lb
+	cat eca_lb
 
 re: fclean all
 
