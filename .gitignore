@@ -6,6 +6,10 @@ vgcore.*
 *.gcno
 unit_tests
 
+# Tests coverage artifacts
+eca_lb
+eca_lc
+
 # Compilation artifatcs
 *.o
 
