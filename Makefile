@@ -15,7 +15,7 @@ LIB = my
 
 SRC = $(MAIN) $(SOURCE)
 
-TESTS = 
+TESTS = tests/wrap_malloc.c
 
 UNIT_TESTS = unit_tests
 
