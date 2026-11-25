@@ -37,6 +37,7 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ) $(VGCORE) $(UNIT_TESTS) $(GCDO) $(GCDA)
+	./scripts/clean.sh
 
 fclean: clean
 	rm -f $(NAME)
