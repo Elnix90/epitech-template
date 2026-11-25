@@ -9,13 +9,14 @@ NAME = projectName
 
 MAIN = src/main.c
 
-SOURCE =
+SOURCE = src/utils/free_char_array.c
 
 LIB = my
 
 SRC = $(MAIN) $(SOURCE)
 
-TESTS = tests/wrap_malloc.c
+TESTS = tests/wrap_malloc.c \
+	tests/free_char_array_test.c
 
 UNIT_TESTS = unit_tests
 
@@ -27,7 +28,7 @@ GCDA = *.gcda
 
 CC = epiclang
 CFLAGS = -Wall -Wextra -I lib/include -g
-LDLIBS = 
+LDLIBS =
 
 all: $(NAME)
 
@@ -43,8 +44,8 @@ fclean: clean
 	rm -f $(NAME)
 	make -C lib/ fclean
 
-unit_tests: $(SRC) $(TESTS)
-	$(CC) $(CFLAGS) -I src/include -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) $(LDLIBS) --coverage -lcriterion -Wl,--wrap=malloc,--wrap=realloc
+unit_tests: $(NAME) $(TESTS)
+	$(CC) $(CFLAGS) -I include -o $(UNIT_TESTS) $(SOURCE) $(TESTS) -Llib -l$(LIB) $(LDLIBS) --coverage -lcriterion -Wl,--wrap=malloc,--wrap=realloc
 
 tests_run: unit_tests
 	rm -f $(GCDA)
